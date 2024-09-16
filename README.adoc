@@ -8,61 +8,66 @@ Step-by-step guide to building an Event-Driven Ansible Decision Environment
 
 NOTE: Tested on RHEL9
 
-.Install required packages
+. Install required packages
++
 [source,shell]
 ----
 sudo dnf install -y python39 python3-devel gcc podman git
 ----
 
-.Start with git clone
+. Start with git clone
++
 [source,shell]
 ----
 cd ~/
 git clone https://github.com/miteshget/eda-de.git
 ----
 
-.Change working directory
+. Change working directory
++
 [source,shell]
 ----
 mkdir ~/eda-de
 cd ~/eda-de
 ----
 
-
-.Create Python Virtual Environment
+. Create & Activate Python Virtual Environment
++
 [source,shell]
 ----
 python3.9 -m venv ~/virtualenvs/eda
 source ~/virtualenvs/eda/bin/activate
 ----
 
-.Install Python library from requirements file
+. Install Python library from requirements file
++
 [source,shell]
 ----
 pip install -U pip
 pip install -r requirements.txt
 ----
 
-
-.Login to registry
+=== Build Decision Environment
+. Login to image registry
++
 [source,shell]
 ----
 podman login registry.access.redhat.com
 ----
-
++
 NOTE: Provide your username and password 
 
 
-.Build image 
+. Build image 
 [source,shell]
 ----
 cd decision-environment
 ansible-builder build -t eda-de:1.0.0
 ----
-
++
 NOTE: This command may take 5 to 10 minutes to finish.
 
-.List pod images 
+. List pod images 
 [source,shell]
 ----
 podman images
