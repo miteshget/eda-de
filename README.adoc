@@ -58,7 +58,7 @@ NOTE: Provide your username and password
 
 
 . Build image
-
++
 [source,shell]
 ----
 cd decision-environment
@@ -67,7 +67,8 @@ ansible-builder build -t eda-de:1.0.0
 
 NOTE: This command may take 5 to 10 minutes to finish.
 
-. List pod images 
+. List pod images
++
 [source,shell]
 ----
 podman images
